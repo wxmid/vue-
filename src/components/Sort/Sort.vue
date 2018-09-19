@@ -1,12 +1,12 @@
 <template>
-<div>
-  <h1>DateFormate</h1>
-</div>
+    <div class="sort">
+      <h1>Sort</h1>
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'DateFormate'
+  name: 'Sort'
 }
 </script>
 

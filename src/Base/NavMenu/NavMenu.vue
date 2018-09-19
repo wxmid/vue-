@@ -34,12 +34,16 @@ export default {
   name: 'NavMenu',
   data () {
     return {
-      // isCollapse: false
+      menus: []
     }
   },
   computed: mapState({
     isCollapse: state => state.isCollapse
   }),
+  created () {
+    this.menus = this.$router.options.routes
+    debugger
+  },
   methods: {
     handleOpen (key, keyPath) {
       console.log(key, keyPath)
