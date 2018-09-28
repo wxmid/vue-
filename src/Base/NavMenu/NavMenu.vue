@@ -1,63 +1,36 @@
 <template>
-  <el-row>
-    <el-col :span="24">
-      <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        :collapse="isCollapse"
-        @open="handleOpen"
-        @close="handleClose"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b">
-        <el-submenu index="1">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>导航一</span>
-          </template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
-      </el-menu>
-    </el-col>
-  </el-row>
+  <div class="nav-menu">
+    <template v-for="(item) in navMenus">
+    <el-submenu v-if="item.children && item.children.length" :index="item.path" :key="item.name">
+      <template slot="title">
+        <i :class="item.meta.icon"></i>
+        <span>{{item.meta.title}}</span>
+      </template>
+      <NavMenu :navMenus="item.children"></NavMenu>
+    </el-submenu>
+    <el-menu-item v-else :index="item.path" :key="item.name">
+      <i :class="item.meta.icon"></i>
+      <span slot="title">{{item.meta.title}}</span>
+    </el-menu-item>
+  </template>
+  </div >
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   name: 'NavMenu',
+  props: ['navMenus'],
   data () {
     return {
-      menus: []
     }
   },
-  computed: mapState({
-    isCollapse: state => state.isCollapse
-  }),
   created () {
-    this.menus = this.$router.options.routes
-    debugger
   },
   methods: {
-    handleOpen (key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleClose (key, keyPath) {
-      console.log(key, keyPath)
-    }
   }
 }
 </script>
 
 <style scoped lang="stylus">
-  .el-menu-vertical-demo
-    border:none;
-  .el-menu-vertical-demo:not(.el-menu--collapse)
-    width: 200px;
+
 </style>
