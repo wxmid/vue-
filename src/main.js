@@ -8,9 +8,16 @@ import ElementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/store'
 // import axios from 'axios'
+import VueQuillEditor from 'vue-quill-editor'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 Vue.config.productionTip = false
+
 Vue.use(Vuex)
 Vue.use(ElementUi)
+Vue.use(VueQuillEditor)
+// Vue.use(UEditor)
 // Vue.use(axios)
 /* eslint-disable no-new */
 new Vue({

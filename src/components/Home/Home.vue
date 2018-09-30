@@ -94,4 +94,9 @@ export default {
     padding:0;
   .fun-describe
     text-align: left
+    margin:10px 0;
+  .code-green
+    color: #63e002
+  .bold
+    font-weight:bold
 </style>

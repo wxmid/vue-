@@ -24,7 +24,7 @@ export default {
 .header
   height: 60px
   background: #800303
-  border-bottom:2px solid #fff;
+  border-bottom:2px solid #3b8502;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

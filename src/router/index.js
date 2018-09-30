@@ -6,6 +6,8 @@ import Sort from '@/components/Sort/Sort'
 import FileFormateLimited from '@/components/FileFormateLimited/FileFormateLimited'
 import DragAnDrop from '@/components/DragAnDrop/DragAnDrop'
 import Container from '@/Base/Container/Container'
+import UEditor from '@/components/UEditor/UEditor' // 富文本编辑器
+import QuillEditor from '@/components/QuillEditor/QuillEditor' // 富文本编辑器
 
 Vue.use(Router)
 
@@ -67,6 +69,26 @@ export default new Router({
               name: 'sort',
               component: Sort,
               meta: {title: '数组排序', icon: 'el-icon-setting'}
+            }
+          ]
+        },
+        {
+          path: '/richEditor',
+          name: 'richEditor',
+          component: Container,
+          meta: {title: '富文本编辑器', icon: 'el-icon-setting'},
+          children: [
+            {
+              path: '/uEditor',
+              name: 'uEditor',
+              component: UEditor,
+              meta: {title: 'UE编辑器', icon: 'el-icon-setting'}
+            },
+            {
+              path: '/quillEditor',
+              name: 'quillEditor',
+              component: QuillEditor,
+              meta: {title: 'Quill编辑器', icon: 'el-icon-setting'}
             }
           ]
         }
