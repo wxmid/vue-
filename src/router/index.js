@@ -8,6 +8,7 @@ import DragAnDrop from '@/components/DragAnDrop/DragAnDrop'
 import Container from '@/Base/Container/Container'
 import UEditor from '@/components/UEditor/UEditor' // 富文本编辑器
 import QuillEditor from '@/components/QuillEditor/QuillEditor' // 富文本编辑器
+import FileUpload from '@/components/FileUpload/FileUpload' // 文件上传
 
 Vue.use(Router)
 
@@ -89,6 +90,20 @@ export default new Router({
               name: 'quillEditor',
               component: QuillEditor,
               meta: {title: 'Quill编辑器', icon: 'el-icon-setting'}
+            }
+          ]
+        },
+        {
+          path: '/filesUoload',
+          name: 'filesUoload',
+          component: Container,
+          meta: {title: '文件上传', icon: 'el-icon-setting'},
+          children: [
+            {
+              path: '/fileUpload',
+              name: 'fileUpload',
+              component: FileUpload,
+              meta: {title: '图片上传', icon: 'el-icon-setting'}
             }
           ]
         }
