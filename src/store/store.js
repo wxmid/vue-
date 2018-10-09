@@ -4,11 +4,16 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     isCollapse: false,
-    onRoutes: '/'
+    onRoutes: '/',
+    token: '',
+    currentRouter: '' // this.$route
   },
   mutations: {
     changeCollapse (state) {
       state.isCollapse = !state.isCollapse
+    },
+    setCurrentRouter (state, payload) {
+      state.currentRouter = payload.router
     }
   }
 })

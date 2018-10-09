@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import vueRouter from 'vue-router'
 import Vuex from 'vuex'
 import ElementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -14,6 +15,7 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 Vue.config.productionTip = false
 
+// Vue.use(vueRouter)
 Vue.use(Vuex)
 Vue.use(ElementUi)
 Vue.use(VueQuillEditor)

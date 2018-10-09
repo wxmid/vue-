@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '../store/store'
 import Home from '@/components/Home/Home'
 import DateFormate from '@/components/DateFormate/DateFormate'
 import Sort from '@/components/Sort/Sort'
@@ -9,6 +10,7 @@ import Container from '@/Base/Container/Container'
 import UEditor from '@/components/UEditor/UEditor' // 富文本编辑器
 import QuillEditor from '@/components/QuillEditor/QuillEditor' // 富文本编辑器
 import FileUpload from '@/components/FileUpload/FileUpload' // 文件上传
+import Login from '@/components/Login/Login' // 登录页
 
 Vue.use(Router)
 
@@ -106,8 +108,82 @@ export default new Router({
               meta: {title: '图片上传', icon: 'el-icon-setting'}
             }
           ]
+        },
+        {
+          path: '/test',
+          name: 'test',
+          component: Container,
+          meta: {title: '测试', icon: 'el-icon-setting'},
+          children: [
+            {
+              path: '/test1',
+              name: 'test1',
+              component: Container,
+              meta: {title: '测试1', icon: 'el-icon-setting'},
+              children: [
+                {
+                  path: '/test2',
+                  name: 'test2',
+                  component: FileUpload,
+                  meta: {title: '测试2', icon: 'el-icon-setting'}
+                },
+                {
+                  path: '/test3',
+                  name: 'test3',
+                  component: Container,
+                  meta: {title: '测试3', icon: 'el-icon-setting'},
+                  children: [
+                    {
+                      path: '/test4',
+                      name: 'test4',
+                      component: Sort,
+                      meta: {title: '测试4', icon: 'el-icon-setting'}
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              path: '/quillEditor',
+              name: 'quillEditor',
+              component: QuillEditor,
+              meta: {title: 'Quill编辑器', icon: 'el-icon-setting'}
+            }
+          ]
+        },
+        {
+          path: 'https://www.baidu.com/',
+          name: 'quillEditor',
+          component: null,
+          meta: {title: '百度', icon: 'el-icon-location', iframe: true}
+        },
+        {
+          path: 'https://fanyi.baidu.com/#en/zh/',
+          name: 'quillEditor',
+          component: null,
+          meta: {title: '百度翻译', icon: 'el-icon-location', iframe: true}
         }
       ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {title: '登录页', icon: 'el-icon-setting'}
     }
   ]
 })
+/*
+Router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    if (store.state.token) {
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: {redirect: to.fullPath}
+      })
+    }
+  }
+})
+*/

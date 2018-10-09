@@ -1,7 +1,8 @@
 <template>
     <div class="file-upload">
-      <input type="file" @change="uploadFile" accept="image/png">
-      <img :src="url" alt="">
+    <!--  <input type="file" @change="uploadFile" accept="image/png">
+      <img :src="url" alt="">-->
+      <!--<iframe class="frame-container" src="https://fanyi.baidu.com/#en/zh/" frameborder="0"></iframe>-->
     </div>
 </template>
 
@@ -36,6 +37,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="stylus">
+.file-upload,.frame-container
+  width:100%;
+  height: 100%
 </style>
