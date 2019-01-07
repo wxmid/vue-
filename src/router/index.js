@@ -11,7 +11,8 @@ import UEditor from '@/components/UEditor/UEditor' // 富文本编辑器
 import QuillEditor from '@/components/QuillEditor/QuillEditor' // 富文本编辑器
 import FileUpload from '@/components/FileUpload/FileUpload' // 文件上传
 import Login from '@/components/Login/Login' // 登录页
-
+import DragDrop from '@/components/DragDrop/DragDrop' // 登录页
+// const DragDrop = () => require("@/components/DragDrop/DragDrop")
 Vue.use(Router)
 
 export default new Router({
@@ -148,7 +149,13 @@ export default new Router({
               name: 'quillEditor',
               component: QuillEditor,
               meta: {title: 'Quill编辑器', icon: 'el-icon-setting'}
-            }
+            },
+              {
+                  path: '/dragDrop',
+                  name: 'dragDrop',
+                  component: DragDrop,
+                  meta: {title: '拖拽', icon: 'el-icon-location'}
+              }
           ]
         },
         {

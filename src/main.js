@@ -10,11 +10,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/store'
 // import axios from 'axios'
 import VueQuillEditor from 'vue-quill-editor'
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
+// import 'quill/dist/quill.core.css'
+// import 'quill/dist/quill.snow.css'
+// import 'quill/dist/quill.bubble.css'
 Vue.config.productionTip = false
+import VueDND from 'awe-dnd'
 
+Vue.use(VueDND)
 // Vue.use(vueRouter)
 Vue.use(Vuex)
 Vue.use(ElementUi)

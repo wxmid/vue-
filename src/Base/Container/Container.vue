@@ -10,15 +10,12 @@ export default {
   data () {
     return {}
   },
-  computed: {
-    ...mapState({
+  computed:mapState({
       currentRouter: state => state.currentRouter
-    })
-  },
+    }),
   created () {
     let currentRouter = this.$route
     console.log(this.$store.state.currentRouter)
-    debugger
   },
   methods: {}
 }
