@@ -15,7 +15,28 @@ import VueQuillEditor from 'vue-quill-editor'
 // import 'quill/dist/quill.bubble.css'
 Vue.config.productionTip = false
 import VueDND from 'awe-dnd'
-
+// 图片放大预览
+import VueDirectiveImagePreviewer from 'vue-directive-image-previewer'
+import 'vue-directive-image-previewer/dist/assets/style.css'
+Vue.use(VueDirectiveImagePreviewer, {
+  background: {     // or : background: '#000'
+    color: '#000' // or rgba or rgb     // or image: 'url(xxx)'
+  },
+  // transition
+  animate: {
+    duration: 400,
+    delay: 0
+  },
+  zIndex: 99999,
+  // loading (not supported)
+  loading: {
+    image: ''
+  },
+  // cursor(css)
+  cursor: 'pointer',
+  clickMethod: 'doubleClick'   // click or doubleClick(not supported)
+})
+//拖拽
 Vue.use(VueDND)
 // Vue.use(vueRouter)
 Vue.use(Vuex)

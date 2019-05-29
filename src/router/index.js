@@ -12,6 +12,7 @@ import QuillEditor from '@/components/QuillEditor/QuillEditor' // 富文本编�
 import FileUpload from '@/components/FileUpload/FileUpload' // 文件上传
 import Login from '@/components/Login/Login' // 登录页
 import DragDrop from '@/components/DragDrop/DragDrop' // 登录页
+import LazyLoad from '@/components/LazyLoad/index' // 懒加载
 // const DragDrop = () => require("@/components/DragDrop/DragDrop")
 Vue.use(Router)
 
@@ -177,6 +178,12 @@ export default new Router({
       name: 'login',
       component: Login,
       meta: {title: '登录页', icon: 'el-icon-setting'}
+    },
+    {
+      path: '/lazyload',
+      name: 'lazyload',
+      component: LazyLoad,
+      meta: {title: '懒加载', icon: 'el-icon-setting'}
     }
   ]
 })

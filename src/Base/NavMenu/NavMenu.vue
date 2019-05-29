@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     getCurrentRouter (data) {
-      debugger
       this.$store.commit('setCurrentRouter', {router: data})
     }
   }

@@ -1,6 +1,6 @@
 <template>
-  <iframe v-if="currentRouter.meta.iframe" :src="currentRouter.path" frameborder="0" class="iframe"></iframe>
-  <router-view v-else></router-view>
+  <!--<iframe v-if="currentRouter.meta.iframe" :src="currentRouter.path" frameborder="0" class="iframe"></iframe>-->
+  <router-view></router-view>
 </template>
 
 <script>
