@@ -58,22 +58,49 @@ export default {
                 'https://cdn.wanwudezhi.com/seller-admin/image/MTU1MTQ0Nzk2NTM5MA==.jpg?imageslim'
             ],
             // pageIndex: 1,
-            pageSize: 10,
+            pageSize: 8,
             currentList: []
         }
     },
     created () {
         //初始化
         this.currentList = this.list.splice(0,this.pageSize)
+        // 内存泄漏
+        function leak(arg) {
+            this.arg = arg;
+        }
+
+        function test() {
+            var l1= new leak('It is a leak');
+
+            function l() {
+                console.info('Here you are!')
+                l1.arg = 'Here you are!'
+                document.body.removeEventListener('click', l);
+            }
+
+            document.body.addEventListener('click', l)
+        }
+
+        test();
     },
     mounted () {
+        window.onload = function outerFunction() {
+            var obj1= document.getElementById("app");
+            // var id = obj1.id;//将obj副本保存于变量id中，则不会使obj元素处理程序的闭包创建循环引用
+            obj1.onclick = function innerfunction(){
+                // console.log(id);
+                console.log(obj1.id);
+            }
+            // obj1 = null;//手动断开 obj 对 document.getElemengById("element")的引用
+        }
         // 滚动加载 this.$refs.lazy
         scroll(window, 60, 'bottom', (result => {
             if(this.list.length) {
                 this.currentList = [...this.currentList, ...this.list.splice(0,this.pageSize)]
             }
         }))
-        lazyLoad()
+        lazyLoad(window, 200)
     },
     methods: {}
 }

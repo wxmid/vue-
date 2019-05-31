@@ -22,6 +22,7 @@ export function scroll(container, distance, direction, callback) { // dom: 滚�
     let isBottom = false
     let result
     listenerContainer.addEventListener('scroll', (e) => {
+        // 避免内存泄漏 直接使用container可能会导致内存泄漏
         switch (direction) {
             case 'top':
                 result = container.scrollTop <= distance
@@ -51,8 +52,9 @@ export function scroll(container, distance, direction, callback) { // dom: 滚�
         }
     })
 }
-// 图片懒加载
-export function lazyLoad(container, dir) {
+// 图片懒加载 首屏自动加载，适用于上下左右滑动懒加载，container：懒加载容器，threshold：懒加载容器扩展阈值单位像素
+export function lazyLoad(container, threshold) {
+    threshold = Number(threshold) || 0
     let containerRect
     let listenerContainer = container
     if ([window, document, document.documentElement, null, undefined, ''].includes(container)) {
@@ -80,7 +82,7 @@ export function lazyLoad(container, dir) {
         let h = dom.offsetHeight
         let w = dom.offsetWidth
 
-        if ((top < (ptop + ph) || (top + h) > ptop) && ['top', 'bottom', '', undefined, null].includes(dir) || (left < (pleft + pw) || (left +w) > pleft) && ['left', 'right'].includes(dir)) {
+        if ((top < (ptop + ph + threshold) && (top + h + threshold) > ptop) && (left < (pleft + pw + threshold) && (left +w + threshold) > pleft)) {
             return true
         } else {
             return false
@@ -90,16 +92,42 @@ export function lazyLoad(container, dir) {
         let imgs = container.querySelectorAll('img')
         imgs.forEach((item, index) => {
             if (visible(item)) {
-                console.log(111)
+                // console.log(111)
                 item.src = item.dataset.url
+                // item.class
             } else {
-                console.log(222)
+                // console.log(222)
                 // item.removeAttribute('src')
             }
         })
     }
     isShow()
-    listenerContainer.addEventListener('scroll', (e) => {
-        isShow()
-    })
+    listenerContainer.addEventListener('scroll', throttle(isShow, 200, 100))
+}
+// 函数节流
+export function throttle(method, delay, duration) {
+    let timer = null
+    let begin = new Date()
+    return () => {
+        let context = this, args = arguments
+        let current = new Date()
+        clearTimeout(context)
+        if (current - begin > duration) {
+            method.apply(context, args)
+            begin = current
+            console.log('render1===')
+        } else {
+            timer = setTimeout(() => {
+                method.apply(context, args)
+                console.log('render')
+            }, delay)
+        }
+    }
+}
+// 去抖动函数
+export function debounce(method, context) {
+    clearTimeout(method.tId);
+    method.tId = setTimeout(function() {
+        method.call(context || window)
+    }, 200)
 }
