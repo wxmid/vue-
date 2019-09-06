@@ -1,4 +1,5 @@
 export function scroll(container, distance, direction, callback) { // dom: 滚动容器，distance：距离滚动方向距离，direction：滚动方向（'top'、 'bottom'、 'left'、 'right',默认bottom）
+    debugger
     // 初始化调用一次
     // callback(true)
     // 距离底部距离 = 滚动内容高度 - 滚动条距离上面的距离 - 滚动条的高度

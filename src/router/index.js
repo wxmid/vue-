@@ -14,6 +14,8 @@ import Login from '@/components/Login/Login' // 登录页
 import DragDrop from '@/components/DragDrop/DragDrop' // 登录页
 import LazyLoad from '@/components/LazyLoad/index' // 懒加载
 // const DragDrop = () => require("@/components/DragDrop/DragDrop")
+/*========+++++++++++++++编辑器++++++++++++++++=====================*/
+import CKEDITOR from '@/pages/Editor/CKEditor/index' // CKEditor
 Vue.use(Router)
 
 export default new Router({
@@ -94,6 +96,12 @@ export default new Router({
               name: 'quillEditor',
               component: QuillEditor,
               meta: {title: 'Quill编辑器', icon: 'el-icon-setting'}
+            },
+            {
+              path: '/ckeditor',
+              name: 'ckeditor',
+              component: CKEDITOR,
+              meta: {title: 'CKEditor编辑器', icon: 'el-icon-setting'}
             }
           ]
         },

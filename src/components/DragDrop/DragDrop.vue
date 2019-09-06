@@ -41,7 +41,7 @@ export default {
             }, {
                 id:9,
                 text: "Burlywood"
-            }]
+            }],
         }
     },
     mounted () {

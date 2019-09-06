@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import { scroll, lazyLoad } from "../../common/js/utils";
+// import { scroll, lazyLoad } from "../../common/js/utils";
+import { scroll, lazyLoad } from "w-lazyload";
 
 export default {
     name: "index",

@@ -18,6 +18,8 @@ import VueDND from 'awe-dnd'
 // 图片放大预览
 import VueDirectiveImagePreviewer from 'vue-directive-image-previewer'
 import 'vue-directive-image-previewer/dist/assets/style.css'
+import CKEditor from '@ckeditor/ckeditor5-vue';
+Vue.use( CKEditor );
 Vue.use(VueDirectiveImagePreviewer, {
   background: {     // or : background: '#000'
     color: '#000' // or rgba or rgb     // or image: 'url(xxx)'
